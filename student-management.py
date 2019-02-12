@@ -1,17 +1,26 @@
-students = [];
+students = []
 
 
 def add_student():
-    print("add student")
     name = input("Name: ")
     age = input("Age: ")
     major = input("Major: ")
-    id = students.__len__()
-    students.append({"id": id, "name": name, "age": age, "major": major})
+    stu_id = students.__len__()
+    students.append({"id": int(stu_id), "name": name, "age": age, "major": major})
 
 
 def delete_student():
-    print("delete student")
+    stu_id = input("Id: ")
+    if stu_id.isdigit():
+        stu_id = int(stu_id)
+        if 0 <= stu_id < students.__len__():
+            for i in range(stu_id + 1, students.__len__()):
+                students[i]["id"] -= 1
+            print(students.pop(stu_id))
+        else:
+            print("Could not find a student with id: {0}".format(stu_id))
+    else:
+        print("Please input a number!")
 
 
 def update_student():
