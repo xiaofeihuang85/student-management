@@ -1,5 +1,13 @@
+students = [];
+
+
 def add_student():
     print("add student")
+    name = input("Name: ")
+    age = input("Age: ")
+    major = input("Major: ")
+    id = students.__len__()
+    students.append({"id": id, "name": name, "age": age, "major": major})
 
 
 def delete_student():
@@ -15,7 +23,7 @@ def find_student():
 
 
 def show_students():
-    print("show students")
+    print(students)
 
 
 while True:
@@ -48,4 +56,3 @@ while True:
             show_students()
         if command == 6:
             break
-    print("Command is in [1, 6]!")
