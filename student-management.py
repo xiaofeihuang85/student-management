@@ -1,3 +1,23 @@
+def add_student():
+    print("add student")
+
+
+def delete_student():
+    print("delete student")
+
+
+def update_student():
+    print("update student")
+
+
+def find_student():
+    print("find student")
+
+
+def show_students():
+    print("show students")
+
+
 while True:
     command = input("\
     =================================================\n\
@@ -16,5 +36,16 @@ while True:
     Command:")
     if command.isdigit():
         command = int(command)
+        if command == 1:
+            add_student()
+        if command == 2:
+            delete_student()
+        if command == 3:
+            update_student()
+        if command == 4:
+            find_student()
+        if command == 5:
+            show_students()
         if command == 6:
             break
+    print("Command is in [1, 6]!")
