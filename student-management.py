@@ -69,6 +69,17 @@ def update_student():
 
 def find_student():
     print("===========Search Student===========")
+    while True:
+        stu_id = input("Student Id: ")
+        if stu_id.isdigit():
+            stu_id = int(stu_id)
+            if 0 <= stu_id < students.__len__():
+                print("Found the student: {0}".format(students[stu_id]))
+                break
+            else:
+                print("Could not find a student with id: {0}".format(stu_id))
+        else:
+            print("Please input a number!")
 
 
 def show_students():
