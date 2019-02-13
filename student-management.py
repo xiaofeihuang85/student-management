@@ -1,15 +1,5 @@
 import json
 
-try:
-    students = []
-    with open('students.txt') as f:
-        for line in f.readlines():
-            students.append(json.loads(line))
-except OSError:
-    students = []
-else:
-    f.close()
-
 
 def save_students_to_file():
     with open('students.txt', 'w') as f:
@@ -85,6 +75,16 @@ def find_student():
 def show_students():
     print(students)
 
+
+try:
+    students = []
+    with open('students.txt') as f:
+        for line in f.readlines():
+            students.append(json.loads(line))
+except OSError:
+    students = []
+else:
+    f.close()
 
 while True:
     command = input("\
