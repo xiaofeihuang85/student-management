@@ -29,38 +29,42 @@ def add_student():
 
 def delete_student():
     print("===========Delete Student===========")
-    stu_id = input("Student Id: ")
-    if stu_id.isdigit():
-        stu_id = int(stu_id)
-        if 0 <= stu_id < students.__len__():
-            for i in range(stu_id + 1, students.__len__()):
-                students[i]["id"] -= 1
-            print(students.pop(stu_id))
-            save_students_to_file()
+    while True:
+        stu_id = input("Student Id: ")
+        if stu_id.isdigit():
+            stu_id = int(stu_id)
+            if 0 <= stu_id < students.__len__():
+                for i in range(stu_id + 1, students.__len__()):
+                    students[i]["id"] -= 1
+                print(students.pop(stu_id))
+                save_students_to_file()
+                break
+            else:
+                print("Could not find a student with id: {0}".format(stu_id))
         else:
-            print("Could not find a student with id: {0}".format(stu_id))
-    else:
-        print("Please input a number!")
+            print("Please input a number!")
 
 
 def update_student():
     print("===========Update Student===========")
-    stu_id = input("Student Id: ")
-    if stu_id.isdigit():
-        stu_id = int(stu_id)
-        if 0 <= stu_id < students.__len__():
-            print("Found the student: {0}".format(students[stu_id]))
-            name = input("Change Name To: ")
-            age = input("Change Age To: ")
-            major = input("Change Major To: ")
-            students[stu_id]["name"] = name
-            students[stu_id]["age"] = age
-            students[stu_id]["major"] = major
-            save_students_to_file()
+    while True:
+        stu_id = input("Student Id: ")
+        if stu_id.isdigit():
+            stu_id = int(stu_id)
+            if 0 <= stu_id < students.__len__():
+                print("Found the student: {0}".format(students[stu_id]))
+                name = input("Change Name To: ")
+                age = input("Change Age To: ")
+                major = input("Change Major To: ")
+                students[stu_id]["name"] = name
+                students[stu_id]["age"] = age
+                students[stu_id]["major"] = major
+                save_students_to_file()
+                break
+            else:
+                print("Could not find a student with id: {0}".format(stu_id))
         else:
-            print("Could not find a student with id: {0}".format(stu_id))
-    else:
-        print("Please input a number!")
+            print("Please input a number!")
 
 
 def find_student():
