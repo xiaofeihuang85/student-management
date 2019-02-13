@@ -73,7 +73,14 @@ def find_student(students):
 
 
 def show_students(students):
-    print(students)
+    # print(students)
+    print("\t\t\t\tAll Students")
+    print("~" * 50)
+    print("id\t\t\tname\t\t\tage\t\t\tmajor")
+    for student in students:
+        print("~" * 50)
+        print(str(student["id"]) + "\t\t\t" + student["name"] + "\t\t\t" + student["age"] + "\t\t\t" + student["major"])
+    print()
 
 
 def main():
