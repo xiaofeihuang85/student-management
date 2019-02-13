@@ -1,22 +1,42 @@
-students = []
+import json
+
+try:
+    students = []
+    with open('students.txt') as f:
+        for line in f.readlines():
+            students.append(json.loads(line))
+except OSError:
+    students = []
+else:
+    f.close()
+
+
+def save_students_to_file():
+    with open('students.txt', 'w') as f:
+        for item in students:
+            f.write("%s\n" % json.dumps(item))
 
 
 def add_student():
+    print("===========Add Student===========")
     name = input("Name: ")
     age = input("Age: ")
     major = input("Major: ")
     stu_id = students.__len__()
     students.append({"id": int(stu_id), "name": name, "age": age, "major": major})
+    save_students_to_file()
 
 
 def delete_student():
-    stu_id = input("Id: ")
+    print("===========Delete Student===========")
+    stu_id = input("Student Id: ")
     if stu_id.isdigit():
         stu_id = int(stu_id)
         if 0 <= stu_id < students.__len__():
             for i in range(stu_id + 1, students.__len__()):
                 students[i]["id"] -= 1
             print(students.pop(stu_id))
+            save_students_to_file()
         else:
             print("Could not find a student with id: {0}".format(stu_id))
     else:
@@ -24,11 +44,12 @@ def delete_student():
 
 
 def update_student():
-    print("update student")
+    print("===========Update Student===========")
+    save_students_to_file()
 
 
 def find_student():
-    print("find student")
+    print("===========Search Student===========")
 
 
 def show_students():
