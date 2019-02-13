@@ -1,10 +1,6 @@
-import json
-
-
 def save_students_to_file(students):
-    with open('students.txt', 'w') as f:
-        for item in students:
-            f.write("%s\n" % json.dumps(item))
+    file = open("students.txt", "w")
+    file.write(str(students))
 
 
 def add_student(students):
@@ -84,19 +80,17 @@ def show_students(students):
 
 
 def main():
-    print_menu(init_students())
+    print_menu(load_students_from_file())
 
 
-def init_students():
+def load_students_from_file():
     students = []
-    try:
-        with open('students.txt') as f:
-            for line in f.readlines():
-                students.append(json.loads(line))
-    except OSError:
-        pass
-    else:
-        f.close()
+    file = open("students.txt", "a+")
+    file.seek(0)
+    content = file.read()
+    if len(content) > 0:
+        students = eval(content)
+    file.close()
     return students;
 
 
