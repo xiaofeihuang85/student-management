@@ -45,7 +45,22 @@ def delete_student():
 
 def update_student():
     print("===========Update Student===========")
-    save_students_to_file()
+    stu_id = input("Student Id: ")
+    if stu_id.isdigit():
+        stu_id = int(stu_id)
+        if 0 <= stu_id < students.__len__():
+            print("Found the student: {0}".format(students[stu_id]))
+            name = input("Change Name To: ")
+            age = input("Change Age To: ")
+            major = input("Change Major To: ")
+            students[stu_id]["name"] = name
+            students[stu_id]["age"] = age
+            students[stu_id]["major"] = major
+            save_students_to_file()
+        else:
+            print("Could not find a student with id: {0}".format(stu_id))
+    else:
+        print("Please input a number!")
 
 
 def find_student():
